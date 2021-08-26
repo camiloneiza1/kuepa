@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EstudianteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name("home");
+
+Route::get('/Registrarme', [EstudianteController::class, 'create']);
+Route::post('/Estudiante', [EstudianteController::class, 'store'])->name("estudiante.store");
+Route::put('/Estudiante', [EstudianteController::class, 'update'])->name("estudiante.update");
+Route::get('/Estudiante', [EstudianteController::class, 'index'])->name("estudiante.index");
